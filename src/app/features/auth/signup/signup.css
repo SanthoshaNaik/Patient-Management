@@ -1,0 +1,94 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #F9EBD7;
+}
+
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 32px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #046A38;
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 28px;
+  color: #666666;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: #26352C;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #CCCCCC;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #046A38;
+  border-color: #046A38;
+}
+
+small {
+  display: block;
+  margin-top: 5px;
+  color: #B42318;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  background-color: #046A38;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.error-message {
+  color: #B42318;
+  margin: 12px 0;
+}
+
+.success-message {
+  color: #046A38;
+  margin: 12px 0;
+}

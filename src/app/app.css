@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #F9EBD7;
+  color: #26352C;
+}
+
+.app-container {
+  padding: 32px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #046A38;
+}
+
+p {
+  margin-top: 0;
+}
