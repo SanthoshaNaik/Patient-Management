@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+    <header class="dashboard-header">
+        <div>
+            <h1>Patient Management System</h1>
+            <p>Dashboard</p>
+        </div>
+
+        <div class="welcome-section">
+            <span>Welcome {{ userName }}</span>
+
+            <button class="logout-buttonn" type="button" (click)="onLogout()">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-content">
+        <h2>Overview</h2>
+        <p>Manage your patient information and appointments from one place.</p>
+
+        <div class="dashboard-cards">
+            <div class="dashboard-card">
+                <h3>Patients</h3>
+                <p>Manage patient records</p>
+                <button type="button">View Patients</button>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Appointments</h3>
+                <p>Manage patient appointments</p>
+                <button type="button">View Appointments</button>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Profile</h3>
+                <p>View your account information</p>
+                <button type="button">View Profile</button>
+            </div>
+        </div>
+    </main>
+</div>

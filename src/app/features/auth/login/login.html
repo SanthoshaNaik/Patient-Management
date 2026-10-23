@@ -1,1 +1,67 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Login to your Patient Management System</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          #emailInput="ngModel"
+          required
+          email
+          placeholder="Enter your email"
+        />
+
+        @if (emailInput.invalid && emailInput.touched) {
+          <small class="field-error">
+            Please enter a valid email address.
+          </small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+          required
+          placeholder="Enter your password"
+        />
+
+        @if (passwordInput.invalid && passwordInput.touched) {
+          <small class="field-error">
+            Password is required.
+          </small>
+        }
+      </div>
+
+      @if (errorMessage()) {
+        <p class="error-message">{{ errorMessage() }}</p>
+      }
+
+      @if (successMessage()) {
+        <p class="success-message">{{ successMessage() }}</p>
+      }
+
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid || isLoading()"
+      >
+        {{ isLoading() ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <p class="signup-link">
+      Don't have an account?
+      <a routerLink="/signup">Create Account</a>
+    </p>
+  </div>
+</div>

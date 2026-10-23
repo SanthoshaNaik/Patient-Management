@@ -1,5 +1,4 @@
-
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth';
 import { SignupRequest } from '../../../shared/models/signup.model';
@@ -11,6 +10,8 @@ import { SignupRequest } from '../../../shared/models/signup.model';
   styleUrl: './signup.css'
 })
 export class Signup {
+  private authService = inject(AuthService);
+
   user = {
     name: '',
     email: '',
@@ -21,8 +22,6 @@ export class Signup {
   isLoading = false;
   errorMessage = '';
   successMessage = '';
-
-  constructor(private authService: AuthService) {}
 
   signup() {
     this.errorMessage = '';
@@ -45,6 +44,7 @@ export class Signup {
       next: (response) => {
         this.successMessage = response || 'Account created successfully.';
         this.isLoading = false;
+
         this.user = {
           name: '',
           email: '',
@@ -54,7 +54,10 @@ export class Signup {
       },
       error: (error) => {
         this.errorMessage =
-          error.error || 'Signup failed. Please try again.';
+          typeof error.error === 'string'
+            ? error.error
+            : 'Signup failed. Please try again.';
+
         this.isLoading = false;
       }
     });

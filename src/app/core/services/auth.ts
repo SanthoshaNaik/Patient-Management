@@ -1,13 +1,17 @@
-import { Service } from '@angular/core';
+
+import { Injectable, inject } from '@angular/core';
 import type { SignupRequest } from '../../shared/models/signup.model';
-import type { HttpClient } from '@angular/common/http';
-import type { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import type { LoginResponse } from '../../shared/models/login.model';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-      private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'http://localhost:5182/api/auth';
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   signup(user: SignupRequest): Observable<string> {
     return this.http.post(
@@ -16,4 +20,17 @@ export class AuthService {
       { responseType: 'text' }
     );
   }
+
+  login(email: string, password: string): Observable<LoginResponse> {
+  return this.http.post<LoginResponse>(
+    `${this.apiUrl}/login`,
+    { email, password }
+  );
+}
+
+logout():void{
+  sessionStorage.removeItem('authToken')
+  sessionStorage.removeItem('userEmail')
+  sessionStorage.removeItem('userName')
+}
 }
